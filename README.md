@@ -1,2 +1,2 @@
 # spring
-Proof of Concept for Spring WS, contract first approach
+Proof of Concepts for Spring related development
