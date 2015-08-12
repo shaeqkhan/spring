@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sws="http://www.springframework.org/schema/web-services"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/web-services 
+      	http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+      	http://www.springframework.org/schema/context 
+      	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- 
+	enables support for endpoint annotation, as per spring docs. 
+	Forums ask to use this along with component scan. See SWS Bug 702 
+	<link>http://stackoverflow.com/questions/6198644/spring-3-sws2-difference-between-contextcomponent-scan-and-swsannotation</link>
+	-->
+	<sws:annotation-driven />
+	
+	<context:component-scan base-package="pkg.endpoint" />
+	
+	<sws:dynamic-wsdl id="holiday" 
+					  portTypeName="HumanResource" 
+					  locationUri="/holidayService/"
+					  targetNamespace="http://mycompany.com/hr/definitions">
+		<sws:xsd location="/WEB-INF/schema/holiday.xsd"/>
+	</sws:dynamic-wsdl>
+	
+	<bean id="printService" class="pkg.service.PrintServiceImpl" />
+	
+</beans>

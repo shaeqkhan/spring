@@ -1,0 +1,15 @@
+Endpoints are the central concept in Spring-WS's server-side support. 
+
+Endpoints provide access to the application behavior which is typically defined by a business service interface. 
+
+An endpoint interprets the XML request message and uses that input to invoke a method on the business service (typically). 
+
+The result of that service invocation is represented as a response message. 
+
+Spring-WS has a wide variety of endpoints, using various ways to handle the XML message, and to create a response.
+
+You create an endpoint by annotating a class with the @Endpoint annotation. 
+
+In the class, you define one or more methods that handle the incoming XML request, by using a wide variety of parameter 
+types (such as DOM elements, JAXB2 objects, etc). You indicate the sort of messages a method can handle by using another 
+annotation (typically @PayloadRoot).
